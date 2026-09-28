@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Photon - Photography Website</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #ffffff;
+            color: #333;
+        }
+
+        /* =========================
+           NAVBAR
+           ========================= */
+
+        nav {
+            width: 100%;
+            padding: 22px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #222;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #444;
+            font-size: 15px;
+        }
+
+        nav ul li a:hover {
+            color: #1597bb;
+        }
+
+        /* =========================
+           HERO
+           ========================= */
+
+        .hero {
+            min-height: 600px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            padding: 80px 20px;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.45),
+                    rgba(0,0,0,0.45)
+                ),
+                url("https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=1600");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            color: white;
+            max-width: 750px;
+        }
+
+        .hero h1 {
+            font-size: 70px;
+            letter-spacing: 5px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #1597bb;
+            color: white;
+            padding: 14px 30px;
+            border-radius: 4px;
+            font-size: 15px;
+        }
+
+        .hero-btn:hover {
+            background-color: #117d9b;
+        }
+
+        /* =========================
+           ABOUT
+           ========================= */
+
+        .about {
+            padding: 90px 10%;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 38px;
+            margin-bottom: 20px;
+            color: #222;
+        }
+
+        .section-line {
+            width: 60px;
+            height: 3px;
+            background-color: #1597bb;
+            margin: 0 auto 30px;
+        }
+
+        .about p {
+            max-width: 750px;
+            margin: auto;
+            line-height: 1.8;
+            color: #666;
+            font-size: 17px;
+        }
+
+        /* =========================
+           SERVICES
+           ========================= */
+
+        .services {
+            background-color: #f5f7f8;
+            padding: 80px 8%;
+            text-align: center;
+        }
+
+        .service-container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            width: 260px;
+            background-color: white;
+            padding: 35px 25px;
+            border-radius: 5px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+
+        .service-icon {
+            font-size: 45px;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            margin-bottom: 15px;
+            color: #222;
+        }
+
+        .service-card p {
+            color: #777;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* =========================
+           GALLERY
+           ========================= */
+
+        .gallery {
+            padding: 90px 7%;
+            text-align: center;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-top: 40px;
+        }
+
+        .gallery-item {
+            height: 250px;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.08);
+        }
+
+        /* =========================
+           CONTACT
+           ========================= */
+
+        .contact {
+            background-color: #f5f7f8;
+            padding: 90px 10%;
+            text-align: center;
+        }
+
+        .contact-text {
+            color: #666;
+            margin-bottom: 35px;
+        }
+
+        .contact-container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .contact-box {
+            width: 250px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 5px;
+        }
+
+        .contact-box h3 {
+            margin-bottom: 12px;
+        }
+
+        .contact-box p {
+            color: #666;
+        }
+
+        /* =========================
+           FOOTER
+           ========================= */
+
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        footer h2 {
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        /* =========================
+           RESPONSIVE
+           ========================= */
+
+        @media (max-width: 800px) {
+
+            nav {
+                padding: 18px 5%;
+            }
+
+            nav ul {
+                gap: 12px;
+            }
+
+            nav ul li a {
+                font-size: 12px;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .gallery-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 550px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                min-height: 500px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .gallery-container {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item {
+                height: 280px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+         ========================= -->
+
+    <nav>
+
+        <div class="logo">
+            PHOTON
+        </div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+         ========================= -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h1>PHOTON</h1>
+
+            <p>
+                Capturing beautiful moments and turning
+                them into unforgettable memories.
+            </p>
+
+            <a href="#gallery" class="hero-btn">
+                Explore Gallery
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ABOUT
+         ========================= -->
+
+    <section class="about" id="about">
+
+        <h2 class="section-title">
+            About Photon
+        </h2>
+
+        <div class="section-line"></div>
+
+        <p>
+            Welcome to Photon, a creative photography studio
+            dedicated to capturing beautiful moments through
+            the power of photography. We believe that every
+            picture tells a story and every moment deserves
+            to be remembered.
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         SERVICES
+         ========================= -->
+
+    <section class="services" id="services">
+
+        <h2 class="section-title">
+            Our Services
+        </h2>
+
+        <div class="section-line"></div>
+
+
+        <div class="service-container">
+
+
+            <div class="service-card">
+
+                <div class="service-icon">
+                    📷
+                </div>
+
+                <h3>
+                    Photography
+                </h3>
+
+                <p>
+                    Professional photography for special
+                    moments, events and creative projects.
+                </p>
+
+            </div>
+
+
+            <div class="service-card">
+
+                <div class="service-icon">
+                    🌄
+                </div>
+
+                <h3>
+                    Landscape
+                </h3>
+
+                <p>
+                    Beautiful landscape photography
+                    capturing nature and its surroundings.
+                </p>
+
+            </div>
+
+
+            <div class="service-card">
+
+                <div class="service-icon">
+                    👤
+                </div>
+
+                <h3>
+                    Portraits
+                </h3>
+
+                <p>
+                    Creative portrait photography designed
+                    to capture personality and expression.
+                </p>
+
+            </div>
+
+
+            <div class="service-card">
+
+                <div class="service-icon">
+                    🎥
+                </div>
+
+                <h3>
+                    Events
+                </h3>
+
+                <p>
+                    Professional coverage for events,
+                    celebrations and memorable occasions.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         GALLERY
+         ========================= -->
+
+    <section class="gallery" id="gallery">
+
+        <h2 class="section-title">
+            Our Gallery
+        </h2>
+
+        <div class="section-line"></div>
+
+
+        <div class="gallery-container">
+
+
+            <div class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1500534623283-312aade485b7?w=800"
+                    alt="Mountain">
+            </div>
+
+
+            <div class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=800"
+                    alt="Nature">
+            </div>
+
+
+            <div class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800"
+                    alt="Forest">
+            </div>
+
+
+            <div class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800"
+                    alt="Beach">
+            </div>
+
+
+            <div class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800"
+                    alt="Mountain Snow">
+            </div>
+
+
+            <div class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=800"
+                    alt="Sunset">
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+         ========================= -->
+
+    <section class="contact" id="contact">
+
+        <h2 class="section-title">
+            Contact Us
+        </h2>
+
+        <div class="section-line"></div>
+
+        <p class="contact-text">
+            Have a project in mind? Get in touch with us.
+        </p>
+
+
+        <div class="contact-container">
+
+
+            <div class="contact-box">
+
+                <h3>
+                    📍 Address
+                </h3>
+
+                <p>
+                    Main Street, Karachi, Pakistan
+                </p>
+
+            </div>
+
+
+            <div class="contact-box">
+
+                <h3>
+                    📞 Phone
+                </h3>
+
+                <p>
+                    +92 300 1234567
+                </p>
+
+            </div>
+
+
+            <div class="contact-box">
+
+                <h3>
+                    ✉ Email
+                </h3>
+
+                <p>
+                    info@photon.com
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+         ========================= -->
+
+    <footer>
+
+        <h2>
+            PHOTON
+        </h2>
+
+        <p>
+            Photography & Creative Studio
+        </p>
+
+        <br>
+
+        <p>
+            © 2026 Photon. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+</body>
+</html>
